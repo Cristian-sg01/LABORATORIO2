@@ -1,0 +1,41 @@
+
+import PostCard from '../components/PostCard.astro';
+
+const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+const posts = await res.json();
+
+---
+
+<html>
+<head>
+  <title>Mi Blog en Astro</title>
+  <link rel="stylesheet" href="../styles/global.css" />
+</head>
+<header class="header">
+  <h1>Mi Blog</h1>
+
+
+<body>
+	<div class="conteiner">
+  <h1> LABORATORIO 2</h1>
+  <div>
+    {posts.map(post => (  
+      <PostCard key={post.id} post={post} />
+    ))}
+  </div>
+</div>
+</body>
+</header>
+<footer class="footer">
+  <p>&copy; Mi Blog</p>
+  <nav class="nav">
+    <li><a href="/">Blog</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </header>
+  
+</footer>
+
+</html>
+
+
